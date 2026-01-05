@@ -1,0 +1,52 @@
+{
+  "name": "APBD Bendahara - Aplikasi Pencatatan Keuangan",
+  "short_name": "APBD Bendahara",
+  "description": "Aplikasi mobile untuk pencatatan APBD khusus bendahara",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["finance", "productivity", "business"],
+  "lang": "id",
+  "dir": "ltr",
+  "prefer_related_applications": false,
+  "shortcuts": [
+    {
+      "name": "Dashboard",
+      "short_name": "Dashboard",
+      "description": "Lihat ringkasan keuangan",
+      "url": "/?tab=dashboard",
+      "icons": [{ "src": "/icon-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Tambah Penerimaan",
+      "short_name": "Penerimaan",
+      "description": "Catat penerimaan baru",
+      "url": "/?tab=penerimaan",
+      "icons": [{ "src": "/icon-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Tambah Pengeluaran",
+      "short_name": "Pengeluaran",
+      "description": "Catat pengeluaran baru",
+      "url": "/?tab=pengeluaran",
+      "icons": [{ "src": "/icon-192x192.png", "sizes": "192x192" }]
+    }
+  ]
+}
