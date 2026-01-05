@@ -67,3 +67,23 @@ export interface SPJReport {
   createdAt: Date
   tanggalSubmit?: Date
 }
+
+export interface RekonsiliasiBankStatus {
+  periode: string
+  tanggalRekonsiliasi: Date
+  saldoBukuKas: number
+  saldoBank: number
+  selisih: number
+  status: 'COCOK' | 'SELISIH' | 'BELUM_COCOK'
+  keterangan?: string
+}
+
+export interface MutasiBank {
+  id: string
+  tanggal: Date
+  keterangan: string
+  debet: number
+  kredit: number
+  saldo: number
+  status: 'COCOK' | 'BELUM_COCOK' | 'SELISIH'
+}

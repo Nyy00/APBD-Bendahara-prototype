@@ -14,6 +14,7 @@ import {
   Calculator
 } from 'lucide-react'
 import { formatCurrency, formatDate } from '@/lib/utils'
+import { RekonsiliasiBankStatus, MutasiBank } from '@/types'
 
 export function Rekonsiliasi() {
   const [selectedPeriod, setSelectedPeriod] = useState({
@@ -21,18 +22,22 @@ export function Rekonsiliasi() {
     tahun: '2024'
   })
 
-  // Mock data
-  const rekonsiliasi = {
+  // Mock data - calculate status dynamically
+  const saldoBukuKas = 125000000
+  const saldoBank = 123500000
+  const selisih = saldoBukuKas - saldoBank
+  
+  const rekonsiliasi: RekonsiliasiBankStatus = {
     periode: 'Januari 2024',
     tanggalRekonsiliasi: new Date('2024-02-01'),
-    saldoBukuKas: 125000000,
-    saldoBank: 123500000,
-    selisih: 1500000,
-    status: 'SELISIH' as const,
-    keterangan: 'Terdapat selisih yang perlu disesuaikan'
+    saldoBukuKas,
+    saldoBank,
+    selisih,
+    status: selisih === 0 ? 'COCOK' : 'SELISIH',
+    keterangan: selisih !== 0 ? 'Terdapat selisih yang perlu disesuaikan' : 'Saldo sudah sesuai'
   }
 
-  const mutasiBank = [
+  const mutasiBank: MutasiBank[] = [
     {
       id: '1',
       tanggal: new Date('2024-01-31'),
@@ -40,7 +45,7 @@ export function Rekonsiliasi() {
       debet: 15000,
       kredit: 0,
       saldo: 123500000,
-      status: 'BELUM_COCOK' as const
+      status: 'BELUM_COCOK'
     },
     {
       id: '2',
@@ -49,7 +54,7 @@ export function Rekonsiliasi() {
       debet: 0,
       kredit: 25000000,
       saldo: 123515000,
-      status: 'COCOK' as const
+      status: 'COCOK'
     },
     {
       id: '3',
@@ -58,7 +63,7 @@ export function Rekonsiliasi() {
       debet: 2500000,
       kredit: 0,
       saldo: 98515000,
-      status: 'COCOK' as const
+      status: 'COCOK'
     }
   ]
 
@@ -72,7 +77,7 @@ export function Rekonsiliasi() {
     }
   ]
 
-  const getStatusColor = (status: string) => {
+  const getStatusColor = (status: 'COCOK' | 'SELISIH' | 'BELUM_COCOK') => {
     switch (status) {
       case 'COCOK':
         return 'text-green-600'
@@ -85,7 +90,7 @@ export function Rekonsiliasi() {
     }
   }
 
-  const getStatusIcon = (status: string) => {
+  const getStatusIcon = (status: 'COCOK' | 'SELISIH' | 'BELUM_COCOK') => {
     switch (status) {
       case 'COCOK':
         return <CheckCircle className="h-4 w-4 text-green-600" />

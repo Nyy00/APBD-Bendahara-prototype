@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 
@@ -8,14 +8,6 @@ export const metadata: Metadata = {
   title: 'APBD Bendahara - Aplikasi Pencatatan Keuangan',
   description: 'Aplikasi mobile untuk pencatatan APBD khusus bendahara',
   manifest: '/manifest.json',
-  themeColor: '#2563eb',
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 1,
-    userScalable: false,
-    viewportFit: 'cover'
-  },
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',
@@ -24,6 +16,15 @@ export const metadata: Metadata = {
   formatDetection: {
     telephone: false
   }
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  viewportFit: 'cover',
+  themeColor: '#2563eb'
 }
 
 export default function RootLayout({
